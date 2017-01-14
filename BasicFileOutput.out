@@ -1,0 +1,35 @@
+1: package com.acseed.practice.io;
+2: 
+3: import java.io.BufferedReader;
+4: import java.io.BufferedWriter;
+5: import java.io.FileWriter;
+6: import java.io.IOException;
+7: import java.io.PrintWriter;
+8: import java.io.StringReader;
+9: 
+10: /**
+11:  * Created by caohongchen on 17/1/14.
+12:  */
+13: public class BasicFileOutput {
+14:     static String file = "BasicFileOutput.out";
+15: 
+16:     public static void main(String[] args) throws IOException {
+17:         BufferedReader in = new BufferedReader(
+18:                 new StringReader(
+19:                         BufferedInputFile.read("/Users/pintec/project/practice/src/main/java/com/acseed/practice/io/BasicFileOutput.java")
+20:                 )
+21:         );
+22:         PrintWriter out = new PrintWriter(
+23:                 new BufferedWriter(
+24:                         new FileWriter(file)
+25:                 )
+26:         );
+27:         int lineCount = 1;
+28:         String s;
+29:         while ((s = in.readLine()) != null) {
+30:             out.println(lineCount ++ + ": " + s);
+31:         }
+32:         out.close();
+33:         System.out.println(BufferedInputFile.read(file));
+34:     }
+35: }
