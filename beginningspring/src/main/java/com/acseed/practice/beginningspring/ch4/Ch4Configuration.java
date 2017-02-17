@@ -1,8 +1,11 @@
 package com.acseed.practice.beginningspring.ch4;
 
+import com.acseed.practice.beginningspring.ch4.dao.AccountDao;
+import com.acseed.practice.beginningspring.ch4.dao.impl.AccountDaoJdbcImpl;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 /**
@@ -18,5 +21,19 @@ public class Ch4Configuration {
         dataSource.setUsername("sa");
         dataSource.setPassword("");
         return dataSource;
+    }
+
+    @Bean
+    public JdbcTemplate jdbcTemplate() {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        jdbcTemplate.setDataSource(dataSource());
+        return jdbcTemplate;
+    }
+
+    @Bean
+    public AccountDao accountDao() {
+        AccountDaoJdbcImpl accountDao = new AccountDaoJdbcImpl();
+        accountDao.setJdbcTemplate(jdbcTemplate());
+        return accountDao;
     }
 }
