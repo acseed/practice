@@ -13,8 +13,12 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  */
 @Configuration
 public class Ch4Configuration {
+    private JdbcTemplate jdbcTemplate;
+
     @Bean
     public DataSource dataSource() {
+
+        //红色
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
         dataSource.setUrl("jdbc:h2:~/test");
