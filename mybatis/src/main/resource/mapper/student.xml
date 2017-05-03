@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acseed.practice.mybatis.mapper.StudentMapper">
+    <select id="getStudentById" resultType="com.acseed.practice.mybatis.model.Student">
+        select * from student where id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.acseed.practice.mybatis.model.Student">
+        insert into student (`id`, `name`, `age`, `sex`)
+        VALUES (#{id}, #{name}, #{age}, #{sex})
+    </insert>
+</mapper>
