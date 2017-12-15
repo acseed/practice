@@ -1,4 +1,4 @@
-package com.acseed.gson;
+package com.acseed.practice.gson;
 
 /**
  * Created by caohongchen on 17-4-14.
